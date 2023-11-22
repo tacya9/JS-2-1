@@ -10,5 +10,26 @@
 	<li>Джон</li>
 	<li>Пит</li>
 </ul>
+
+Напишите код, чтобы получить в консоль следующие элементы элемент
+(с использованием всех свойств из теории)
+div?
+ul?
+второй li (с именем Пит)?
+
+<script>
+	const div = document.body.firstChild.nextSibling;
+	const ul = document.body.firstElementChild.nextElementSibling;
+
+	let li;
+
+	for (let elem of ul.children) {
+		li = elem;
+	}
+
+	console.log('div =', div);
+	console.log('ul =', ul);
+	console.log('li =', li);
+</script>
 </body>
 </html>
