@@ -55,7 +55,8 @@ td.style.backgroundColor = 'red';
 	const table = document.body.firstElementChild;
 
 	for (let i = 0; i < table.lastElementChild.children.length; i++) {
-		let td = table.rows[i].cells[i];
+		const td = table.rows[i].cells[i];
+
 		td.style.background = 'red';
 	}
 </script>
