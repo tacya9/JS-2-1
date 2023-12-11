@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.1
+Мы имеем следующую верстку:
+input id="textField" type="text" /
+
+Необходимо написать скрипт, который выведет окно для ввода данных (prompt) и то, что введет пользователь должно появиться внутри нашего инпута
+
+<input id="textField" type="text" />
+<script>
+	const userText = prompt('Введите данные');
+	const input = document.getElementById('textField');
+
+	input.value = userText;
+</script>
+</body>
+</html>
