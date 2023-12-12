@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.2
+Мы имеем следующую верстку:
+<ul id="todoList">
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+
+Необходимо написать скрипт, который запросит данные через prompt столько раз, сколько li находится в нашем ul.
+И данные с каждого prompt появятся внутри соответствующего li.
+
+<script>
+	const liItems = document.querySelectorAll('#todoList > li');
+
+	liItems.forEach(function (li) {
+		li.innerHTML = prompt();
+	})
+
+	// const ul = document.getElementById('todoList');
+	//
+	// for (let li of ul.children) {
+	// 	li.innerHTML = prompt();
+	// }
+</script>
+</body>
+</html>
