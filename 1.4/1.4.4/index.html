@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.4
+У нас есть простая верстка внутри body:
+<h1 id='userName'>My name is </h1>
+
+Необходимо написать скрипт, который закончит эту строчку с таким текстом, который введет пользователь через prompt.
+Например пользователь введет "Tania", тогда после выполнения скрипта верстка получится:
+h1 My name is Tania h1
+
+А если мы в html файле поменяет только текст в h1 на "My wife is", то после выполнения скрипта мы получим результат
+	с этим новым текстом:
+	h1 My wife is Tania h1
+
+<script>
+	document.getElementById('userName').innerHTML += prompt();
+</script>
+</body>
+</html>
