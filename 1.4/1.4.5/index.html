@@ -15,7 +15,7 @@ The sum is <span id='spansSum'></span>
 Добавь необходимые атрибуты в верстке, если нужно, и напиши скрипт, который подсчитает сумму чисел в спанах (внутри
 дива) и результат внесет в последний спан после дива.
 <script>
-	const spanItems = document.getElementById('spanNum').querySelectorAll('span');
+	const spanItems = document.querySelectorAll('#spanNum > span');
 
 	let sum = 0;
 
