@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.5
+В body мы имеем такую верстку (количество спанов в диве может быть разным):
+<div id='spanNum'>
+	<span>1</span> + <span>2</span> + <span>3</span>
+</div>
+The sum is <span id='spansSum'></span>
+
+Добавь необходимые атрибуты в верстке, если нужно, и напиши скрипт, который подсчитает сумму чисел в спанах (внутри
+дива) и результат внесет в последний спан после дива.
+<script>
+	const spanItems = document.querySelectorAll('#spanNum > span');
+
+	let sum = 0;
+
+	spanItems.forEach(function (span) {
+		sum += +span.innerHTML;
+	})
+
+	document.getElementById('spansSum').innerHTML = sum;
+</script>
+</body>
+</html>
