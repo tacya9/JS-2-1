@@ -43,21 +43,23 @@
 
 <script>
 	const dataCollection = {
+		ulItems: null,
 		init: function () {
+			this.findUlItems();
 			this.countQuantity();
 			this.numberLi();
 		},
+		findUlItems: function () {
+			this.ulItems = document.querySelectorAll('#lists > ul');
+		},
 		countQuantity: function () {
-			const ulItems = document.querySelectorAll('#lists > ul');
 			const liItems = document.querySelectorAll('#lists li');
 
-			document.getElementById('ulNum').innerHTML += ' ' + ulItems.length;
+			document.getElementById('ulNum').innerHTML += ' ' + this.ulItems.length;
 			document.getElementById('liNum').innerHTML += ' ' + liItems.length;
 		},
 		numberLi: function () {
-			const ulItems = document.querySelectorAll('#lists > ul');
-
-			ulItems.forEach(function (ul, ulIndex) {
+			this.ulItems.forEach(function (ul, ulIndex) {
 				ul.querySelectorAll('li').forEach(function (li, liIndex) {
 					li.innerHTML = ulIndex + 1 + '.' + (liIndex + 1);
 				})
