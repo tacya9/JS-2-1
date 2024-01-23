@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.6
+У нас есть враппер div, внутри может находится любое количество ul с любым количеством li. Необходимо
+написать скрипт, который проставит в каждой лишке номера в формате X.Y (X - номер ul, Y - номер li).
+И в конце выведет их количество в отдельных строках. Весь функционал написать в объекте, который будет
+инициализироваться dataCollection.init()
+
+Например мы имеем такю верстку:
+<div id='lists'>
+	<ul>
+		<li></li>
+		<li></li>
+	</ul>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<div id='ulNum'>Total ul -</div>
+<div id='liNum'>Total li -</div>
+
+После выполнения скрипта должно быть так:
+<!--		<div>-->
+<!--			<ul>-->
+<!--				<li>1.1</li>-->
+<!--				<li>1.2</li>-->
+<!--			</ul>-->
+<!--			<ul>-->
+<!--				<li>2.1</li>-->
+<!--				<li>2.2</li>-->
+<!--				<li>2.3</li>-->
+<!--			</ul>-->
+<!--		</div>-->
+<!--		<div>Total ul - 2</div>-->
+<!--		<div>Total li - 5</div>-->
+
+<script>
+	const dataCollection = {
+		ulItems: null,
+		init: function () {
+			this.findUlItems();
+			this.countQuantity();
+			this.numberLi();
+		},
+		findUlItems: function () {
+			this.ulItems = document.querySelectorAll('#lists > ul');
+		},
+		countQuantity: function () {
+			const liItems = document.querySelectorAll('#lists li');
+
+			document.getElementById('ulNum').innerHTML += ' ' + this.ulItems.length;
+			document.getElementById('liNum').innerHTML += ' ' + liItems.length;
+		},
+		numberLi: function () {
+			this.ulItems.forEach(function (ul, ulIndex) {
+				ul.querySelectorAll('li').forEach(function (li, liIndex) {
+					li.innerHTML = ulIndex + 1 + '.' + (liIndex + 1);
+				})
+			})
+		}
+	}
+
+	dataCollection.init();
+</script>
+</body>
+</html>
