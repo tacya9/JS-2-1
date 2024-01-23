@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.4.7
+У нас есть такая верстка:
+<ol id='list'>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ol>
+
+необходимо написать скрипт, который будет показывать 2 сообщения:
+1) спрашивает: "Введите сообщение для нужного пункта в формате N=Message"
+Пользователь вводит например: "2=Second item" и нажимаем OK.
+После этого во второй лишке появляется это сообщение - 'li' Second item '/li'
+2) потом появляется подтверждение с вопросом: "Желаете продолжить?"
+Если нажимается OK, то все повторяется - появляется опять первое сообщение.
+Если нажимается Cancel, то скрипт завершается.
+
+Примечание:
+Если пользователь ввел номер несуществующей лишки, то второе сообщение появляется
+с другим текстом: "Такого пункта не существует. Желаете продолжить?".
+Если пользователь указывает номер не пустой лишки, то она просто перезаписывается с новым сообщением.
+
+<script>
+	const infoUserList = {
+		init: function (selectors) {
+			this.fillLi(selectors);
+		},
+		fillLi: function (selectors) {
+			const liItems = document.querySelectorAll(selectors);
+
+			let isContinue = true;
+
+			while (isContinue) {
+				const userMessage = prompt('Введите сообщение для нужного пункта в формате N=Message');
+				const liNumber = userMessage.slice(0, userMessage.indexOf('='));
+				const liText = userMessage.slice(userMessage.indexOf('=') + 1);
+
+				if (liNumber <= liItems.length) {
+					liItems[liNumber - 1].innerHTML = liText;
+					isContinue = confirm('Желаете продолжить?');
+				} else {
+					isContinue = confirm('Такого пункта не существует. Желаете продолжить?');
+				}
+			}
+		}
+	}
+
+	infoUserList.init('#list > li');
+</script>
+</body>
+</html>
