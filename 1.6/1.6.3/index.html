@@ -17,7 +17,7 @@
 находится в нашем ul. В prompt надо вводить только цвет ввиде зарезервированных слов или hex.
 После выполнения скрипта мы увидем раскрашенные лишки соответствующим образом.
 <script>
-	let liItems = document.querySelectorAll('#colorList > li');
+	const liItems = document.querySelectorAll('#colorList > li');
 
 	liItems.forEach(function (liItem) {
 		liItem.style.background = prompt('Введите текст в виде зарезервированных слов или hex');
