@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.6.4
+Мы имеем следующую верстку:
+<ul id="customList">
+	<li>11111</li>
+	<li>22222</li>
+	<li>33333</li>
+</ul>
+
+Необходимо написать скрипт, который запросит стили для каждой лишки через prompt столько раз, сколько li находится
+в нашем ul. В prompt надо вводить стили в таком формате:
+[property1]:[value1] [property2]:[value2] [propertyN]:[valueN]
+Количество стилей можно вводить любое количество. После выполнения скрипта мы увидем стилизованные лишки
+соответствующим образом.
+
+Например пользователь ввел: color:orange fontWeight:bold background:blue lineHeight:50px
+
+И тогда к этой лишке применятся инлайновые стили:
+color: orange;
+font-weight: bold;
+background: blue;
+line-height: 50px;
+
+<script>
+	const liItems = document.querySelectorAll('#customList > li');
+
+	liItems.forEach(function (liItem) {
+		const liStyles = prompt('Введите стиля в формате: [property1]:[value1] [property2]:[value2]');
+		const properties = liStyles.split(' ');
+		const propertiesObject = {};
+
+		properties.forEach(function (propertyValueText) {
+			const propertyValueArray = propertyValueText.split(':');
+			const propertyName = propertyValueArray[0];
+			const propertyValue = propertyValueArray[1];
+
+			propertiesObject[propertyName] = propertyValue;
+		})
+
+		for (let propertyName in propertiesObject) {
+			liItem.style[propertyName] = propertiesObject[propertyName];
+		}
+	})
+
+</script>
+</body>
+</html>
