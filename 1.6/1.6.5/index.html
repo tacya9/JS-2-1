@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.6.5
+Мы имеем следующую верстку:
+
+<div id="original">
+	<div style="border: 1px solid black;">1</div>
+	<div style="border: 2px solid red;">2</div>
+	<div style="border: 3px solid blue;">3</div>
+</div>
+
+<div id="copy">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+</div>
+
+Необходимо написать скрипт, который скопирует все стили бордеров дивов, которые лежат внутри дива с id="original",
+и применит эти бордеры в таком же порядке к дивам, которые лежат внутри дива с id="copy".
+Копирование бордеров должно произойти с увеличением толщины в 5 раз т.е. в копируемые дивы должны получится такие
+толщины: 5px, 10px, 15px.
+Предполагается, что копируемые инлайн стили содержат только стили с бордерами как в примере.
+<script>
+	const originalDivs = document.querySelectorAll('#original > div');
+	const copyDivs = document.querySelectorAll('#copy > div');
+
+	originalDivs.forEach(function (div, divIndex) {
+		const propertyValueArray = div.getAttribute('style').split(':');
+		const borderValues = propertyValueArray[1].split(' ');
+		const bigBorder = parseInt(borderValues[1]) * 5 + 'px';
+
+		const newBorderValues = borderValues;
+		newBorderValues[1] = bigBorder;
+
+		const newBorderValuesStr = propertyValueArray[0] + ':' + newBorderValues.join(' ');
+
+		copyDivs[divIndex].style = newBorderValuesStr;
+	})
+</script>
+</body>
+</html>
