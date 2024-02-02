@@ -15,14 +15,14 @@
 
 <script>
 	function clear(elem) {
-		const liItems = elem;
+		const items = Array.from(elem.children);
 
-		liItems.forEach(function (li) {
-			li.remove();
+		items.forEach(function (item) {
+			item.remove();
 		})
 	}
 
-	clear(document.querySelectorAll('#elem > li')); // очищает список
+	clear(document.getElementById('elem')); // очищает список
 </script>
 </body>
 </html>
