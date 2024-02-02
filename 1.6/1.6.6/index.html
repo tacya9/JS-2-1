@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+	<style>
+		td {
+			padding: 20px;
+			border: 1px solid;
+		}
+	</style>
+</head>
+<body>
+### 1.6.6
+Мы имеем следующие стили (должны быть в head) и верстку:
+<table id="table">
+	<tr>
+		<td data-bg="blue"></td>
+		<td></td>
+		<td></td>
+		<td data-bg="orange"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td data-bg="blue"></td>
+		<td data-bg="orange"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td data-bg="orange"></td>
+		<td data-bg="blue"></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td data-bg="orange"></td>
+		<td></td>
+		<td></td>
+		<td data-bg="blue"></td>
+	</tr>
+</table>
+
+Необходимо написать скрипт, который пропишет цифры в каждую ячейку в формате X.Y (X - номер строки, Y - номер столбца)
+и применит инлайновый бэкграунд только тем ячейкам, которые имеют атрибут data-bg, с соответствующим значением.
+<script>
+	const tableModification = {
+		trItems: null,
+
+		init: function () {
+			this.trItems = document.querySelectorAll('#table tr');
+
+			this.modifyTable();
+		},
+		modifyTable: function () {
+			this.trItems.forEach(function (trItem, trIndex) {
+				const tdItems = trItem.querySelectorAll('td');
+
+				tdItems.forEach(function (tdItem, tdIndex) {
+					tdItem.innerHTML = `${trIndex + 1}.${tdIndex + 1}`;
+
+					if (tdItem.dataset.bg) {
+						tdItem.style.background = tdItem.getAttribute('data-bg');
+					}
+				})
+			})
+		}
+	}
+
+	tableModification.init();
+</script>
+</body>
+</html>
