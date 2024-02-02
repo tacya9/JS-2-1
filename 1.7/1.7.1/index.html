@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.7.1
+Создайте функцию clear(elem), которая удаляет всё содержимое из elem.
+
+<ol id="elem">
+	<li>Привет</li>
+	<li>Мир</li>
+</ol>
+
+<script>
+	function clear(elem) {
+		const liItems = elem;
+
+		liItems.forEach(function (li) {
+			li.remove();
+		})
+	}
+
+	clear(document.querySelectorAll('#elem > li')); // очищает список
+</script>
+</body>
+</html>
