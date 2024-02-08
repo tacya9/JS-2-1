@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.7.3
+Напишите функцию createTree, которая создаёт вложенный список ul/li из объекта.
+<div id="tree"></div>
+
+Например:
+
+const data = {
+"Рыбы": {
+"форель": {},
+"лосось": {}
+},
+"Деревья": {
+"Огромные": {
+"секвойя": {},
+"дуб": {}
+},
+"Цветковые": {
+"яблоня": {},
+"магнолия": {}
+}
+}
+}
+
+Синтаксис:
+const container = document.getElementById('container');
+createTree(container, data); // создаёт дерево в контейнере
+
+Выберите один из двух способов решения этой задачи:
+Создать строку, а затем присвоить через container.innerHTML.
+Создавать узлы через методы DOM.
+Если получится – сделайте оба.
+
+P.S. Желательно, чтобы в дереве не было лишних элементов, в частности -– пустых ul /ul на нижнем уровне.
+<script>
+	const data = {
+		"Рыбы": {
+			"форель": {},
+			"лосось": {}
+		},
+		"Деревья": {
+			"Огромные": {
+				"секвойя": {},
+				"дуб": {}
+			},
+			"Цветковые": {
+				"яблоня": {},
+				"магнолия": {},
+			}
+		}
+	}
+
+	const container = document.getElementById('tree');
+
+	function createTree(container, data) { // approach number 1
+		const ul = document.createElement('ul');
+
+		container.append(ul);
+
+		for (let key in data) {
+			const li = document.createElement('li');
+			const nestedObj = data[key];
+
+			li.innerHTML = key;
+			ul.append(li);
+
+			if (Object.keys(nestedObj).length > 0) {
+				createTree(li, nestedObj);
+			}
+		}
+	}
+
+	//
+	// let htmlStructureString = '';
+	//
+	// function createTree(container, data) {
+	// 	htmlStructureString += '<ul>';
+	//
+	// 	for (let key in data) {
+	// 		const nestedObj = data[key];
+	//
+	// 		htmlStructureString += `<li>${key}`;
+	//
+	// 		if (Object.keys(nestedObj).length) {
+	// 			createTree(key, nestedObj);
+	// 		}
+	//
+	// 		htmlStructureString += `</li>`;
+	// 	}
+	//
+	// 	htmlStructureString += `</ul>`;
+	//
+	// 	container.innerHTML = htmlStructureString;
+	// }
+
+	createTree(container, data);
+</script>
+</body>
+</html>
