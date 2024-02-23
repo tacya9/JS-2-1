@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		table {
+			border-collapse: collapse;
+		}
+
+		td,
+		th {
+			border: 1px solid black;
+			padding: 3px;
+			text-align: center;
+		}
+
+		th {
+			font-weight: bold;
+			background-color: #E6E6E6;
+		}
+	</style>
+</head>
+<body>
+### 1.7.5
+Напишите функцию createCalendar(elem, year, month).
+
+Вызов функции должен создать календарь для заданного месяца month в году year и вставить его в elem.
+
+Календарь должен быть таблицей, где неделя – это tr, а день – это td. У таблицы должен быть заголовок с названиями
+дней недели, каждый день – th, первым днём недели должен быть понедельник.
+
+Например, createCalendar(cal, 2012, 9) сгенерирует в cal следующий календарь:
+
+P.S. В этой задаче достаточно сгенерировать календарь, кликабельным его делать не нужно.
+
+<div id="calendar"></div>
+
+<script>
+	const calendar = document.getElementById('calendar');
+
+	function createCalendar(year, month) {
+		const table = document.createElement('table');
+		const nameDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+		const thead = document.createElement('thead');
+		const tbody = document.createElement('tbody');
+		const titleTr = document.createElement('tr');
+		const date = new Date(year, month - 1);
+		const newDate = new Date(year, month);
+		const dayInMonth = Math.round((newDate - date) / 1000 / 3600 / 24);
+		const weekDay = date.getDay();
+
+		let dayNumber = -weekDay + 1;
+
+		table.append(thead);
+
+		nameDays.forEach(function (nameDay) {
+			const th = document.createElement('th');
+
+			th.innerHTML = nameDay;
+			titleTr.append(th);
+			thead.append(titleTr);
+		})
+
+		table.append(tbody);
+
+		for (let i = 0; i < Math.round((dayInMonth + weekDay) / 7); i++) {
+			const rowTr = document.createElement('tr');
+
+			for (let j = 0; j < 7; j++) {
+				const td = document.createElement('td');
+
+				if (dayNumber < dayInMonth) {
+					if (dayNumber < 0) {
+						td.innerHTML = '';
+						++dayNumber;
+					} else {
+						td.innerHTML = ++dayNumber;
+					}
+				}
+
+				rowTr.append(td);
+			}
+
+			tbody.append(rowTr);
+		}
+		calendar.append(table);
+	}
+
+	createCalendar(2012, 9);
+</script>
+</body>
+</html>
