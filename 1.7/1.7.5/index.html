@@ -39,44 +39,41 @@ P.S. В этой задаче достаточно сгенерировать к
 <script>
 	const calendar = document.getElementById('calendar');
 
-	function createCalendar(year, month) {
+	function createCalendar(elem, year, month) {
 		const table = document.createElement('table');
-		const nameDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+		const dayName = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 		const thead = document.createElement('thead');
 		const tbody = document.createElement('tbody');
 		const titleTr = document.createElement('tr');
-		const date = new Date(year, month - 1);
-		const newDate = new Date(year, month);
-		const dayInMonth = Math.round((newDate - date) / 1000 / 3600 / 24);
-		const weekDay = date.getDay();
+		const startDate = new Date(year, month - 1);
+		const endDate = new Date(year, month);
+		const daysInMonth = Math.round((endDate - startDate) / 1000 / 3600 / 24);
+		const startWeekDay = startDate.getDay();
+		const tableRowQty = Math.round((daysInMonth + startWeekDay) / 7);
 
-		let dayNumber = -weekDay + 1;
+		let dayNumber = -startWeekDay + 1;
 
 		table.append(thead);
 
-		nameDays.forEach(function (nameDay) {
+		dayName.forEach(function (nameDay) {
 			const th = document.createElement('th');
 
 			th.innerHTML = nameDay;
 			titleTr.append(th);
-			thead.append(titleTr);
 		})
 
+		thead.append(titleTr);
 		table.append(tbody);
 
-		for (let i = 0; i < Math.round((dayInMonth + weekDay) / 7); i++) {
+		for (let i = 0; i < tableRowQty; i++) {
 			const rowTr = document.createElement('tr');
 
 			for (let j = 0; j < 7; j++) {
 				const td = document.createElement('td');
 
-				if (dayNumber < dayInMonth) {
-					if (dayNumber < 0) {
-						td.innerHTML = '';
-						++dayNumber;
-					} else {
-						td.innerHTML = ++dayNumber;
-					}
+				if (dayNumber < daysInMonth) {
+					++dayNumber;
+					td.innerHTML = (dayNumber <= 0) ? '' : dayNumber;
 				}
 
 				rowTr.append(td);
@@ -84,10 +81,10 @@ P.S. В этой задаче достаточно сгенерировать к
 
 			tbody.append(rowTr);
 		}
-		calendar.append(table);
+		elem.append(table);
 	}
 
-	createCalendar(2012, 9);
+	createCalendar(calendar, 2024, 2);
 </script>
 </body>
 </html>
