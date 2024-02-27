@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="clock" class="c-clock">
+	<span class="c-clock-hours">00</span>:<span class="c-clock-minutes">00</span>:<span class="c-clock-seconds">00</span>
+</div>
+<!-- клик по этой кнопке вызовет clockStart() -->
+<!--<input type="button" onclick="clockStart()" value="Старт">-->
+<button onclick="clockStart()">Старт</button>
+
+<!-- клик по этой кнопке вызовет clockStop() -->
+<!--<input type="button" onclick="clockStop()" value="Стоп">-->
+<button onclick="clockStop()">Стоп</button>
+
+### 1.7.6
+Создайте цветные часы как в примере ниже:
+
+Для стилизации используйте HTML/CSS, JavaScript должен только обновлять время в элементах.
+
+<script>
+	const clockValues = document.querySelectorAll('#clock > span');
+	
+	let timerId;
+
+	function setTime() {
+		const date = new Date();
+		
+		clockValues[0].innerHTML = date.getHours();
+		clockValues[1].innerHTML = date.getMinutes();
+		clockValues[2].innerHTML = date.getSeconds();
+	}
+
+	function clockStart() {
+		timerId = setInterval(setTime, 1000);
+	}
+
+	function clockStop() {
+		clearInterval(timerId);
+	}
+</script>
+</body>
+</html>
