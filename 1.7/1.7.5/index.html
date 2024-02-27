@@ -39,9 +39,9 @@ P.S. В этой задаче достаточно сгенерировать к
 <script>
 	const calendar = document.getElementById('calendar');
 
-	function createCalendar(elem, year, month) {
+	function createCalendar(container, year, month) {
 		const table = document.createElement('table');
-		const dayName = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+		const dayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 		const thead = document.createElement('thead');
 		const tbody = document.createElement('tbody');
 		const titleTr = document.createElement('tr');
@@ -55,7 +55,7 @@ P.S. В этой задаче достаточно сгенерировать к
 
 		table.append(thead);
 
-		dayName.forEach(function (nameDay) {
+		dayNames.forEach(function (nameDay) {
 			const th = document.createElement('th');
 
 			th.innerHTML = nameDay;
@@ -81,7 +81,7 @@ P.S. В этой задаче достаточно сгенерировать к
 
 			tbody.append(rowTr);
 		}
-		elem.append(table);
+		container.append(table);
 	}
 
 	createCalendar(calendar, 2024, 2);
