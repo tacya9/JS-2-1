@@ -1,0 +1,11 @@
+.c-clock .c-clock-hours {
+  color: red;
+}
+.c-clock .c-clock-minutes {
+  color: green;
+}
+.c-clock .c-clock-seconds {
+  color: blue;
+}
+
+/*# sourceMappingURL=base.css.map */
