@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 1.7.7
+Доработать задание 1.7.6 - создать объект с методом init, который принимает id контейнера, внутри которого будет
+создаваться структура часов вместе с кнопками, которые запускают и останавливают часы.
+<div id="clock"></div>
+<script>
+	const clockComponent = {
+		hoursSpan: null,
+		minutesSpan: null,
+		secondsSpan: null,
+		startBtn: null,
+		stopBtn: null,
+		timerId: null,
+
+		init: function (id) {
+			this.createStructure(id);
+			this.detectElements(id);
+			this.addListeners();
+			this.updateClock();
+		},
+		createStructure: function (id) {
+			const container = document.querySelector(`#${id}`);
+			const structure = '<div class="c-clock">' +
+					'<span class="c-clock-hours" data-hours></span><span>:</span>' +
+					'<span class="c-clock-minutes" data-minutes></span><span>:</span>' +
+					'<span class="c-clock-seconds" data-seconds></span>' +
+					'</div>' +
+					'<button data-start-clock>Старт</button>' +
+					'<button data-stop-clock>Стоп</button>';
+
+			container.innerHTML = structure;
+		},
+		detectElements: function (id) {
+			this.hoursSpan = document.querySelector(`#${id} [data-hours]`);
+			this.minutesSpan = document.querySelector(`#${id} [data-minutes]`);
+			this.secondsSpan = document.querySelector(`#${id} [data-seconds]`);
+			this.startBtn = document.querySelector(`#${id} [data-start-clock]`);
+			this.stopBtn = document.querySelector(`#${id} [data-stop-clock]`);
+		},
+		addListeners: function () {
+			const self = this;
+
+			this.startBtn.addEventListener('click', function () {
+				self.startClock();
+			});
+
+			this.stopBtn.addEventListener('click', function () {
+				self.stopClock();
+			});
+		},
+		getNumber(number) {
+			return (number < 10) ? '0' + number : number;
+		},
+		updateClock: function () {
+			const date = new Date();
+
+			this.hoursSpan.innerHTML = this.getNumber(date.getHours());
+			this.minutesSpan.innerHTML = this.getNumber(date.getMinutes());
+			this.secondsSpan.innerHTML = this.getNumber(date.getSeconds());
+		},
+		startClock: function () {
+			const self = this;
+
+			this.timerId = setInterval(function () {
+				self.updateClock();
+			}, 1000);
+		},
+		stopClock: function () {
+			clearInterval(this.timerId);
+		}
+	}
+
+	clockComponent.init('clock');
+</script>
+</body>
+</html>
