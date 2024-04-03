@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.7.9
+В ней может быть больше строк.
+
+Напишите код для сортировки по столбцу "name".
+
+<table id="table">
+	<tr>
+		<th>Имя</th>
+		<th>Фамилия</th>
+		<th>Возраст</th>
+	</tr>
+	<tr>
+		<td>John</td>
+		<td>Smith</td>
+		<td>10</td>
+	</tr>
+	<tr>
+		<td>Pete</td>
+		<td>Brown</td>
+		<td>15</td>
+	</tr>
+	<tr>
+		<td>Ann</td>
+		<td>Lee</td>
+		<td>5</td>
+	</tr>
+</table>
+
+<script>
+	const table = document.getElementById('table');
+	const headerCells = table.querySelectorAll('th');
+	const trItems = table.querySelectorAll('tr');
+	const tableValues = [];
+
+	let tableStr = '';
+
+	function compareNamesInTable(a, b) {
+		if (a[0] < b[0]) return -1;
+	}
+
+	trItems.forEach(function (tr, trIndex) {
+		let tdItems = tr.querySelectorAll('td');
+		let tdValues = [];
+
+		tdItems.forEach(function (td, tdIndex) {
+			tdValues[tdIndex] = td.textContent;
+		})
+
+		tableValues[trIndex] = [tdValues];
+	})
+
+	tableValues.sort(compareNamesInTable);
+
+	headerCells.forEach(function (th) {
+		tableStr += `<th>${th.textContent}</th>`;
+	})
+
+	tableValues.forEach(function (tr) {
+		let tagsWithText = '';
+
+		tr.forEach(function (tdItems) {
+			tdItems.forEach(function (td) {
+				tagsWithText += `<td>${td}</td>`;
+			})
+		})
+
+		tableStr += `<tr>${tagsWithText}</tr>`;
+	})
+
+	table.innerHTML = tableStr;
+</script>
+</body>
+</html>
