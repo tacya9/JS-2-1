@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+### 1.8.1
+Напишите функцию showNotification(options), которая создаёт уведомление:
+div class="notification" с заданным
+содержимым. Уведомление должно автоматически исчезнуть через 1,5 секунды.
+
+showNotification({
+top: 10, // 10px от верхней границы окна (по умолчанию 0px)
+right: 10, // 10px от правого края окна (по умолчанию 0px)
+html: "Hello!", // HTML-уведомление
+className: "welcome" // дополнительный класс для div (необязательно)
+});
+
+<script>
+	function showNotification(options) {
+		const div = document.createElement('div');
+
+		div.innerHTML = options.html;
+		div.style.top = `${options.top}px`;
+		div.style.right = `${options.right}px`;
+		div.style.left = `${options.left}px`;
+		div.style.bottom = `${options.bottom}px`;
+		div.classList.add('notification');
+		div.classList.add(options.className);
+
+		document.body.append(div);
+
+		setTimeout(function() {
+			div.remove();
+		}, 3000);
+	}
+
+	showNotification({
+		top: 10, // 10px от верхней границы окна (по умолчанию 0px)
+		right: 10,
+		left: 10,
+		bottom: 10,// 10px от правого края окна (по умолчанию 0px)
+		html: "Hello!", // HTML-уведомление
+		className: "welcome" // дополнительный класс для div (необязательно)
+	})
+
+	// setTimeout(showNotification, 3000, {top: 10,right: 10,html: "Hello!",className: "welcome"});
+</script>
+</body>
+</html>
