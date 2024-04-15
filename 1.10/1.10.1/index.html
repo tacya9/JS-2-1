@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 1.10.1
+Необходимо через 2 секунды плавно проскролить всю страницу так, чтобы текст "after 1000px" стал виден вверху страницы.
+Структура документа следующая:
+<div style="height: 2000px"></div>
+<b id="bElement ">after 1000px</b>
+<div style="height: 2000px"></div>
+
+<script>
+	const b = document.getElementById('bElement ');
+
+	setTimeout(function() {
+		b.scrollIntoView({
+			behavior: "smooth"
+		})
+	}, 2000);
+</script>
+</body>
+</html>
