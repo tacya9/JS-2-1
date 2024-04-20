@@ -483,3 +483,48 @@ P.S. Да, центрирование можно сделать при помо�
 Координаты, вычисленные вами, должны совпадать с теми, которые возвращаются по клику мыши.
 
 P.S. Код должен работать, если у элемента другие размеры или есть рамка, без привязки к конкретным числам.
+
+### 1.11.2
+Покажите заметку рядом с элементом
+Создайте функцию positionAt(anchor, position, elem), которая позиционирует элемент elem в зависимости от значения
+свойства position рядом с элементом anchor.
+
+Аргумент position – строка с одним из 3 значений:
+
+"top" – расположить elem прямо над anchor
+"right" – расположить elem непосредственно справа от anchor
+"bottom" – расположить elem прямо под anchor
+Она используется внутри функции showNote(anchor, position, html), которая уже есть в исходном коде задачи. Она создаёт
+и показывает элемент-«заметку» с текстом html на заданной позиции position рядом с элементом anchor.
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+	voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+	molestias sit tempore omnis recusandae
+	esse sequi officia sapiente.</p>
+
+<blockquote id="blockquote">
+	Teacher: Why are you late?
+	Student: There was a man who lost a hundred dollar bill.
+	Teacher: That's nice. Were you helping him look for it?
+	Student: No. I was standing on it.
+</blockquote>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+	voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+	molestias sit tempore omnis recusandae
+	esse sequi officia sapiente.</p>
+
+	function showNote(anchor, position, html) {
+		const note = document.createElement('div');
+
+		note.className = "note";
+		note.innerHTML = html;
+		document.body.append(note);
+
+		positionAt(anchor, position, note);
+	}
+
+	const blockquote = document.getElementById('blockquote');
+
+	showNote(blockquote, "top", "note above");
+	showNote(blockquote, "right", "note at the right");
+	showNote(blockquote, "bottom", "note below");
