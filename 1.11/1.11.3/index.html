@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 1.11.3
+Усовершенствуйте решение предыдущего задания Покажите заметку около элемента (абсолютное позиционирование): научите
+функцию positionAt(anchor, position, elem) вставлять elem внутрь anchor.
+
+Новые значения для аргумента position:
+
+top-out, right-out, bottom-out – работают так же, как раньше, они вставляют elem сверху/справа/снизу anchor.
+top-in, right-in, bottom-in – вставляют elem внутрь anchor: приклеивают его к верхнему/правому/нижнему краю.
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+	voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+	molestias sit tempore omnis recusandae
+	esse sequi officia sapiente.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque
+	dolorum fuga ad incidunt
+</p>
+
+<blockquote id="blockquote">
+	Teacher: Why are you late?
+	Student: There was a man who lost a hundred dollar bill.
+	Teacher: That's nice. Were you helping him look for it?
+	Student: No. I was standing on it.
+</blockquote>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+	voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+	molestias sit tempore omnis recusandae
+	esse sequi officia sapiente.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque
+	dolorum fuga ad incidunt
+	voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+	</p>
+<script>
+	function positionAt(anchor, position, elem) {
+		const anchorCoords = anchor.getBoundingClientRect();
+		const elemCoords = elem.getBoundingClientRect();
+
+		switch (position) {
+			case 'top-out':
+				elem.style.left = anchorCoords.left + 'px';
+				elem.style.top = (anchorCoords.top - elemCoords.height) + 'px';
+				break;
+			case 'top-in':
+				elem.style.left = anchorCoords.left + 'px';
+				elem.style.top = anchorCoords.top + 'px';
+				elem.style.background = '#026580';
+				break;
+			case 'right-out':
+				elem.style.top = anchorCoords.top + 'px';
+				elem.style.left = (anchorCoords.width + anchorCoords.x) + 'px';
+				break;
+			case 'right-in':
+				elem.style.top = anchorCoords.top + 'px';
+				elem.style.left = (anchorCoords.width + anchorCoords.x - elemCoords.width) + 'px';
+				elem.style.background = '#026580';
+				break;
+			case 'bottom-out':
+				elem.style.left = anchorCoords.left + 'px';
+				elem.style.top = (anchorCoords.height + anchorCoords.top) + 'px';
+				break;
+			case 'bottom-in':
+				elem.style.left = anchorCoords.left + 'px';
+				elem.style.top = (anchorCoords.height + anchorCoords.top - elemCoords.height) + 'px';
+				elem.style.background = '#026580';
+				break;
+		}
+	}
+
+	function showNote(anchor, position, html) {
+		const note = document.createElement('div');
+
+		note.className = "note";
+		note.innerHTML = html;
+		document.body.append(note);
+
+		positionAt(anchor, position, note);
+	}
+
+	const blockquote = document.getElementById('blockquote');
+
+	showNote(blockquote, "top-out", "note above");
+	showNote(blockquote, "right-out", "note at the right");
+	showNote(blockquote, "bottom-out", "note below");
+	showNote(blockquote, "top-in", "note above");
+	showNote(blockquote, "right-in", "note at the right");
+	showNote(blockquote, "bottom-in", "note below");
+</script>
+</body>
+</html>
