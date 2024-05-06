@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.1.2
+Создайте кнопку, которая будет скрывать себя по нажатию.
+<button id="hider">Нажмите, чтобы спрятать</button>
+<script>
+	const hider = document.getElementById('hider');
+
+	hider.onclick = function (event) {
+		event.target.classList.add('hidden');
+	}
+</script>
+</body>
+</html>
