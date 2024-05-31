@@ -1,0 +1,13 @@
+#field {
+  position: relative;
+  cursor: default;
+}
+
+#ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 1s ease, top 1s ease;
+}
+
+/*# sourceMappingURL=base.css.map */
