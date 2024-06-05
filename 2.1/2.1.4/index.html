@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.1.4
+Создать меню, которое по нажатию открывается либо закрывается:
+
+P.S. HTML/CSS исходного документа можно и нужно менять.
+<div id="collapsingList" class="c-collapsing-list">
+	<button id="toggle" class="c-collapsing-list__button">Сладости (нажми меня)!</button>
+	<ul class="c-collapsing-list__list">
+		<li>Пирожное</li>
+		<li>Пончик</li>
+		<li>Мёд</li>
+	</ul>
+</div>
+
+<script>
+	const collapsingList = document.getElementById('collapsingList');
+	const toggle = document.getElementById('toggle');
+
+	toggle.onclick = function () {
+		collapsingList.classList.toggle('m-open');
+	}
+</script>
+</body>
+</html>
