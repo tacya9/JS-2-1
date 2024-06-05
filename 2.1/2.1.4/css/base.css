@@ -1,0 +1,32 @@
+.c-collapsing-list.m-open .c-collapsing-list__button::before {
+  transform: rotate(90deg);
+}
+.c-collapsing-list.m-open .c-collapsing-list__list {
+  display: block;
+}
+
+.c-collapsing-list__button {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding-left: 15px;
+  font-size: 18px;
+}
+.c-collapsing-list__button::before {
+  content: "";
+  border: 5px solid transparent;
+  border-left: 10px solid darkgreen;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.c-collapsing-list__list {
+  margin-top: 0;
+  list-style: none;
+  padding-left: 15px;
+  display: none;
+}
+
+/*# sourceMappingURL=base.css.map */
