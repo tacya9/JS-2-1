@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/reset.css" type="text/css" rel="stylesheet">
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.1.5
+Добавить кнопку закрытия
+Есть список сообщений.
+При помощи JavaScript для каждого сообщения добавьте в верхний правый угол кнопку закрытия.
+<!--<button id="button" class="remove-button">[x]</button>-->
+
+<ul id="messagesList" class="c-messages-list">
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Лошадь</h3>
+		<p class="c-messages-list__content">Домашняя лошадь — животное семейства непарнокопытных, одомашненный и
+			единственный сохранившийся подвид дикой
+			лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+	</li>
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Осёл</h3>
+		<p class="c-messages-list__content">Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид
+			дикого осла (Equus asinus),
+			сыгравший важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в
+			хозяйстве многих развивающихся стран.</p>
+	</li>
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Кошка</h3>
+		<p class="c-messages-list__content">Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее
+			животное, одно из наиболее
+			популярных(наряду с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других
+			мелких животных, кошка — социальное животное, использующее для общения широкий диапазон звуковых
+			сигналов.</p>
+	</li>
+</ul>
+<script>
+	const messagesList = document.getElementById('messagesList');
+	const messages = messagesList.querySelectorAll('[data-message]');
+
+	messages.forEach(function (message) {
+		const button = document.createElement('button');
+
+		button.classList.add('remove-button');
+		button.innerHTML = '[x]';
+		message.prepend(button);
+
+		button.onclick = function () {
+			button.closest('[data-message]').remove();
+		}
+	})
+
+</script>
+</body>
+</html>
