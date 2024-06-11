@@ -22,7 +22,7 @@ body {
   position: relative;
 }
 
-.remove-button {
+.c-messages-list__close-button {
   font-size: 110%;
   color: darkred;
   right: 10px;
