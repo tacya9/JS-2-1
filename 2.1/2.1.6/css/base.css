@@ -17,31 +17,27 @@
 }
 
 .c-carousel__arrow {
-  padding: 0;
   background: #ddd;
   border-radius: 15px;
   border: 1px solid gray;
   font-size: 24px;
   line-height: 24px;
   color: #444;
-  display: block;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   left: 5px;
 }
-.c-carousel__arrow.m-right {
-  right: 5px;
-  left: auto;
-}
-
 .c-carousel__arrow:focus {
   outline: none;
 }
-
 .c-carousel__arrow:hover {
   background: #ccc;
   cursor: pointer;
+}
+.c-carousel__arrow.m-right {
+  right: 5px;
+  left: auto;
 }
 
 .c-carousel__img {
