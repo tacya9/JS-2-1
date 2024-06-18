@@ -1,0 +1,52 @@
+.c-carousel {
+  width: 390px;
+  background: #eeeeee;
+  padding: 0 45px;
+  position: relative;
+  border-radius: 15px;
+  border: 1px solid #CCC;
+}
+
+.c-carousel__list {
+  display: flex;
+  flex-direction: row;
+  height: 130px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.c-carousel__arrow {
+  background: #ddd;
+  border-radius: 15px;
+  border: 1px solid gray;
+  font-size: 24px;
+  line-height: 24px;
+  color: #444;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5px;
+}
+.c-carousel__arrow:focus {
+  outline: none;
+}
+.c-carousel__arrow:hover {
+  background: #ccc;
+  cursor: pointer;
+}
+.c-carousel__arrow.m-right {
+  right: 5px;
+  left: auto;
+}
+
+.c-carousel__img {
+  width: 130px;
+  height: 130px;
+}
+
+.c-carousel__view {
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=base.css.map */
