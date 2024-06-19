@@ -1,0 +1,21 @@
+.c-card {
+	border: 1px dashed black;
+	display: inline-block;
+	padding: 15px;
+	text-align: center;
+
+	&.m-selected {
+		background: orange;
+	}
+}
+
+.c-card__title {
+	display: block;
+}
+
+.c-card__button {
+	padding: 10px;
+	background: transparent;
+	border: none;
+	outline: none;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.2.1
+Необходимо сделать мини карточку продукта, внутри которой находится кнопка "REVIEW".
+Когда кликаем по самой карточке, то она выделяется оранжевым цветом, если еще раз кликаем,
+то оранжевый цвет снимается (т.е. таким образом мы можем выделить или снять выделение карточки).
+Когда кликаем на кнопку "REVIEW", то появляется алерт, в котором написано:
+"This is a large popup with detailed product description".
+При этом когда мы кликаем по кнопке "REVIEW" сама карточка не должна выделяться.
+
++-----------------------+
+| |
+| The product card |
+| |
+| REVIEW |
+| |
++-----------------------+
+
+<div id="card" class="c-card">
+	<span class="c-card__title">The product card </span>
+	<button data-btn class="c-card__button">REVIEW</button>
+</div>
+
+<script>
+	const card = document.getElementById('card');
+	const button = card.querySelector('[data-btn]')
+
+	card.addEventListener('click', function () {
+		card.classList.toggle('m-selected');
+	})
+
+	button.addEventListener('click', function (event) {
+		event.stopPropagation();
+		alert('This is a large popup with detailed product description');
+	});
+</script>
+</body>
+</html>
