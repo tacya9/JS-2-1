@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/reset.css" type="text/css" rel="stylesheet">
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<ul id="messagesList" class="c-messages-list">
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Лошадь</h3>
+		<p class="c-messages-list__content">Домашняя лошадь — животное семейства непарнокопытных, одомашненный и
+			единственный сохранившийся подвид дикой
+			лошади, вымершей в дикой природе, за исключением небольшой популяции лошади Пржевальского.</p>
+		<button id="button" class="c-messages-list__close-button">[x]</button>
+	</li>
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Осёл</h3>
+		<p class="c-messages-list__content">Домашний осёл (лат. Equus asinus asinus), или ишак, — одомашненный подвид
+			дикого осла (Equus asinus),
+			сыгравший важную историческую роль в развитии хозяйства и культуры человека и по-прежнему широко в
+			хозяйстве многих развивающихся стран.</p>
+		<button id="button" class="c-messages-list__close-button">[x]</button>
+	</li>
+	<li data-message class="c-messages-list__message">
+		<h3 class="c-messages-list__title">Кошка</h3>
+		<p class="c-messages-list__content">Кошка, или домашняя кошка (лат. Felis silvestris catus), — домашнее
+			животное, одно из наиболее
+			популярных(наряду с собакой) «животных-компаньонов». Являясь одиночным охотником на грызунов и других
+			мелких животных, кошка — социальное животное, использующее для общения широкий диапазон звуковых
+			сигналов.</p>
+		<button id="button" class="c-messages-list__close-button">[x]</button>
+	</li>
+</ul>
+<script>
+	const messagesList = document.getElementById('messagesList');
+
+	messagesList.onclick = function (event) {
+		const target = event.target;
+
+		if (target.tagName === 'BUTTON') {
+			target.closest('[data-message]').remove();
+		}
+	}
+</script>
+</body>
+</html>
