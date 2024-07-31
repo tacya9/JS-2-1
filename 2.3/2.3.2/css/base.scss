@@ -1,0 +1,23 @@
+.c-main-list__item {
+	&.m-close {
+		.c-main-list__list {
+			display: none;
+		}
+	}
+}
+.c-main-list__toggle {
+	background: none;
+	border: none;
+	font-family: "Times New Roman";
+	font-size: 16px;
+	padding: 0;
+
+	&:hover {
+		font-weight: bold;
+		cursor: pointer;
+	}
+}
+.c-main-list__item-name:hover {
+	font-weight: bold;
+	cursor: pointer;
+}

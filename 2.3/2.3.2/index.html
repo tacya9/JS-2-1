@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.3.2
+Создайте дерево, которое по клику на заголовок скрывает-показывает потомков:
+Животные
+Млекопитающие
+Коровы
+Ослы
+Собаки
+Тигры
+Другие
+Змеи
+Птицы
+Ящерицы
+Рыбы
+Аквариумные
+Гуппи
+Скалярии
+Морские
+Морская форель
+
+Требования:
+Использовать только один обработчик событий (применить делегирование)
+Клик вне текста заголовка (на пустом месте) ничего делать не должен.
+
+<ul class="c-main-list" id="mainList">
+	<li data-item class="c-main-list__item">
+		<button data-toggle class="c-main-list__toggle">Животные</button>
+		<ul class="c-main-list__list">
+			<li data-item class="c-main-list__item">
+				<button data-toggle class="c-main-list__toggle">Млекопитающие</button>
+				<ul class="c-main-list__list">
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Коровы</span>
+					</li>
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Ослы</span>
+					</li>
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Собаки</span>
+					</li>
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Тигры</span>
+					</li>
+				</ul>
+			</li>
+			<li data-item class="c-main-list__item">
+				<button data-toggle class="c-main-list__toggle">Другие</button>
+				<ul class="c-main-list__list">
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Змеи</span>
+					</li>
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Птицы</span>
+					</li>
+					<li class="c-main-list__item"><span class="c-main-list__item-name">Ящерицы</span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li data-item class="c-main-list__item">
+		<button data-toggle class="c-main-list__toggle">Рыбы</button>
+		<ul class="c-main-list__list">
+			<li data-item class="c-main-list__item">
+				<button data-toggle class="c-main-list__toggle">Аквариумные</button>
+				<ul class="c-main-list__list">
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Гуппи</span>
+					</li>
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Скалярии</span>
+					</li>
+				</ul>
+			</li>
+			<li data-item class="c-main-list__item">
+				<button data-toggle class="c-main-list__toggle">Морские</button>
+				<ul class="c-main-list__list">
+					<li class="c-main-list__item">
+						<span class="c-main-list__item-name">Морская форель</span>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+<script>
+	const mainList = document.getElementById('mainList');
+
+	mainList.onclick = function (event) {
+		const target = event.target;
+
+		if (target.hasAttribute('data-toggle')) {
+			target.closest('[data-item]').classList.toggle('m-close');
+		}
+	}
+</script>
+</body>
+</html>
