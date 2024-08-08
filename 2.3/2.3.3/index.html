@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 2.3.3
+Сделать таблицу сортируемой: при клике на элемент th строки таблицы должны сортироваться по соответствующему столбцу.
+
+Каждый элемент th имеет атрибут data-type:
+
+<table class="c-main-table" id="grid">
+	<thead>
+	<tr>
+		<th class="c-main-table__col-title" data-type="number">Возраст</th>
+		<th class="c-main-table__col-title" data-type="string">Имя</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td class="c-main-table__cell">5</td>
+		<td class="c-main-table__cell">Вася</td>
+	</tr>
+	<tr>
+		<td class="c-main-table__cell">2</td>
+		<td class="c-main-table__cell">Петя</td>
+	</tr>
+	<tr>
+		<td class="c-main-table__cell">12</td>
+		<td class="c-main-table__cell">Женя</td>
+	</tr>
+	<tr>
+		<td class="c-main-table__cell">9</td>
+		<td class="c-main-table__cell">Маша</td>
+	</tr>
+	<tr>
+		<td class="c-main-table__cell">1</td>
+		<td class="c-main-table__cell">Илья</td>
+	</tr>
+	</tbody>
+</table>
+
+В примере выше первый столбец содержит числа, а второй – строки. Функция сортировки должна это учитывать, ведь числа
+сортируются иначе, чем строки.
+
+Сортировка должна поддерживать только типы "string" и "number".
+
+Возраст Имя
+5 Вася
+2 Петя
+12 Женя
+9 Маша
+1 Илья
+P.S. Таблица может быть большой, с любым числом строк и столбцов.
+
+<script>
+	const tableSort = {
+		table: null,
+		tbody: null,
+		trItems: null,
+		rowValues: [],
+		columnNames: [],
+		columnTypes: [],
+
+		init: function (id) {
+			this.table = document.getElementById(id);
+			this.tbody = this.table.querySelector('tbody');
+			this.trItems = this.table.querySelectorAll('tr');
+			this.getData();
+			this.addSortingOnClick()
+		},
+		sortTableData: function (arr, colName, order) {
+			function compareData(a, b) {
+				if (a[colName] < b[colName]) return order;
+				if (a[colName] > b[colName]) return -order;
+			}
+
+			arr.sort(compareData);
+		},
+		getColumnNames: function (tr) {
+			const self = this;
+			const thItems = tr.querySelectorAll('th');
+
+			thItems.forEach(function (th, thIndex) {
+				self.columnNames[thIndex] = th.innerHTML;
+				self.columnTypes[thIndex] = th.getAttribute('data-type');
+			})
+		},
+		getRowValues: function (tr, trIndex) {
+			const self = this;
+			const tdItems = tr.querySelectorAll('td');
+			const tdValues = {};
+
+			tdItems.forEach(function (td, tdIndex) {
+				tdValues[self.columnNames[tdIndex]] = (self.columnTypes[tdIndex] === 'number') ? +td.textContent : td.textContent;
+			})
+			self.rowValues[trIndex] = tdValues;
+		},
+		getData: function () {
+			const self = this;
+
+			self.trItems.forEach(function (tr, trIndex) {
+				if (trIndex === 0) {
+					self.getColumnNames(tr);
+				} else {
+					self.getRowValues(tr, trIndex);
+				}
+			})
+		},
+		addSortingOnClick: function () {
+			const self = this;
+
+			self.table.onclick = function (event) {
+				const target = event.target;
+				const columnName = target.innerHTML;
+
+				if (target.tagName === 'TH') {
+					let newTbody = '<tbody><tr>';
+
+					if (target.hasAttribute('data-order')) {
+						target.setAttribute('data-order', -target.getAttribute('data-order'));
+					} else {
+						target.setAttribute('data-order', -1);
+					}
+
+					self.sortTableData(self.rowValues, columnName, +target.getAttribute('data-order'));
+
+					self.rowValues.forEach(function (rowValue) {
+						newTbody += '<tr>';
+
+						self.columnNames.forEach(function (columnName) {
+							newTbody += `<td class="c-main-table__cell">${rowValue[columnName]}</td>`;
+						})
+
+						newTbody += '</tr>';
+					})
+
+					newTbody += '</tbody>';
+
+					self.tbody.innerHTML = newTbody;
+				}
+			}
+		}
+	}
+
+	tableSort.init('grid');
+</script>
+</body>
+</html>

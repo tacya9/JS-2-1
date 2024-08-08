@@ -1,0 +1,14 @@
+.c-main-table {
+	border-collapse: collapse;
+}
+
+.c-main-table__col-title,
+.c-main-table__cell {
+	padding: 4px;
+	border: 1px solid black;
+}
+
+.c-main-table__col-title:hover {
+	background: yellow;
+	cursor: pointer;
+}
