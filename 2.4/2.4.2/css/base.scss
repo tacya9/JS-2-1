@@ -1,0 +1,34 @@
+body {
+	margin: 0;
+	padding: 0;
+	font: 75%/120% sans-serif;
+}
+
+.c-carousel__main-img {
+	border: solid 1px #ccc;
+	width: 550px;
+	height: 400px;
+	padding: 5px;
+}
+
+.c-carousel__list {
+	margin: 0;
+	padding: 0;
+}
+
+.c-carousel__link {
+	border: solid 1px #ccc;
+	width: 100px;
+	height: 100px;
+	padding: 3px;
+	margin: 2px;
+	float: left;
+
+	&:hover {
+		border-color: #FF9900;
+	}
+}
+
+.c-carousel__item {
+	list-style: none;
+}

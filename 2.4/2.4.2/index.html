@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta class="c-carousel__link"charset="UTF-8">
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+	<title>Title</title>
+</head>
+<body>
+### 2.4.2
+Создайте галерею изображений, в которой основное изображение изменяется при клике на уменьшенный вариант.
+P.S. Используйте делегирование.
+<div id="carousel" class="c-carousel">
+	<div class="c-carousel__main-img"><img data-main-img src="https://en.js.cx/gallery/img1-lg.jpg" alt="Large image"></div>
+
+	<ul class="c-carousel__list">
+		<!-- браузер показывает небольшую встроенную подсказку из атрибута "title" при наведении курсора на текст -->
+		<li class="c-carousel__item">
+			<a class="c-carousel__link" href="https://en.js.cx/gallery/img2-lg.jpg" title="Image 2"><img data-main-img src="https://en.js.cx/gallery/img2-thumb.jpg"></a>
+		</li>
+		<li class="c-carousel__item">
+			<a class="c-carousel__link" href="https://en.js.cx/gallery/img3-lg.jpg" title="Image 3"><img data-main-img src="https://en.js.cx/gallery/img3-thumb.jpg"></a>
+		</li>
+		<li class="c-carousel__item">
+			<a class="c-carousel__link" href="https://en.js.cx/gallery/img4-lg.jpg" title="Image 4"><img data-main-img src="https://en.js.cx/gallery/img4-thumb.jpg"></a>
+		</li>
+		<li class="c-carousel__item">
+			<a class="c-carousel__link" href="https://en.js.cx/gallery/img5-lg.jpg" title="Image 5"><img data-main-img src="https://en.js.cx/gallery/img5-thumb.jpg"></a>
+		</li>
+		<li class="c-carousel__item">
+			<a class="c-carousel__link" href="https://en.js.cx/gallery/img6-lg.jpg" title="Image 6"><img data-main-img src="https://en.js.cx/gallery/img6-thumb.jpg"></a>
+		</li>
+	</ul>
+</div>
+<script>
+	const carousel = document.getElementById('carousel');
+
+	carousel.addEventListener('click', function (event) {
+		const target = event.target;
+
+		event.preventDefault();
+
+		if (target.parentElement.hasAttribute('href')){
+			const imgSrc = target.parentElement.getAttribute('href');
+
+			carousel.querySelector('[data-main-img]').setAttribute('src', imgSrc);
+		}
+	})
+</script>
+</body>
+</html>
