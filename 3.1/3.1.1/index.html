@@ -36,6 +36,21 @@ P.P.S. Предотвратите стандартное для браузера
 </div>
 <script>
 	const list = document.getElementById('list');
+	const liItems = list.querySelectorAll('li');
+
+	liItems.forEach(function (li) {
+		li.addEventListener('mousedown', function (event) {
+			event.preventDefault();
+		})
+	})
+
+	// list.addEventListener('mousedown', function (event) {
+	// 	const target = event.target;
+	//
+	// 	if (target.tagName === 'LI') {
+	// 		event.preventDefault();
+	// 	}
+	// })
 
 	list.addEventListener('click', function (event) {
 		const target = event.target;
