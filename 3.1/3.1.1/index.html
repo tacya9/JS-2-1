@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 3.1.1
+Создайте список, в котором элементы могут быть выделены, как в файловых менеджерах.
+
+При клике на элемент списка выделяется только этот элемент (добавляется класс .selected), отменяется выделение
+остальных элементов.
+Если клик сделан вместе с Ctrl (Cmd для Mac), то выделение переключается на элементе, но остальные элементы при этом
+не изменяются.
+Демо:
+Кликни на элемент списка, чтобы выделить его.
+Кристофер Робин
+Винни Пух
+Тигра
+Кенга
+Кролик. Просто Кролик.
+
+P.S. В этом задании все элементы списка содержат только текст. Без вложенных тегов.
+
+P.P.S. Предотвратите стандартное для браузера выделение текста при кликах.
+<div>
+	<div>Кликни на элемент списка, чтобы выделить его.</div>
+	<ul id="list">
+		<li>Кристофер Робин</li>
+		<li>Винни Пух</li>
+		<li>Тигра</li>
+		<li>Кенга</li>
+		<li>Кролик. Просто Кролик.</li>
+	</ul>
+</div>
+<script>
+	const list = document.getElementById('list');
+	const liItems = list.querySelectorAll('li');
+
+	liItems.forEach(function (li) {
+		li.addEventListener('mousedown', function (event) {
+			event.preventDefault();
+		})
+	})
+
+	// list.addEventListener('mousedown', function (event) {
+	// 	const target = event.target;
+	//
+	// 	if (target.tagName === 'LI') {
+	// 		event.preventDefault();
+	// 	}
+	// })
+
+	list.addEventListener('click', function (event) {
+		const target = event.target;
+
+		if (target.tagName === 'LI') {
+			if (!event.ctrlKey) {
+				const items = list.querySelectorAll('.selected');
+
+				items.forEach(function (item) {
+					item.classList.remove('selected');
+				})
+			}
+
+			target.classList.add('selected');
+		}
+	})
+</script>
+</body>
+</html>
