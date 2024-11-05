@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 3.2.2
+Напишите функцию, которая показывает подсказку над элементом только в случае, когда пользователь передвигает мышь на
+него, но не через него.
+
+Другими словами, если пользователь подвинул курсор на элементе и остановился – показывать подсказку. А если он просто
+быстро провёл курсором по элементу, то не надо ничего показывать. Кому понравится лишнее мелькание?
+
+Технически, мы можем измерять скорость прохода курсора мыши над элементом, и если она низкая, то можно посчитать, что
+пользователь остановил курсор над элементом, и показать ему подсказку. А если скорость высокая, то тогда не показывать.
+
+Создайте для этого универсальный объект new HoverIntent(options).
+
+Его настройки options:
+
+elem – отслеживаемый элемент.
+over – функция, вызываемая, при заходе на элемент, считаем что заход – это когда курсор медленно двигается или
+остановился над элементом.
+out – функция, вызываемая при уходе курсора с элемента (если был заход).
+Пример использования такого объекта для показа подсказки:
+
+Если двигать курсор над «часами» быстро, то ничего не произойдёт, а если вы замедлите движение курсора над элементом
+или остановите его, то будет показана подсказка.
+
+Обратите внимание: подсказка не должна пропадать (мигать), когда курсор переходит между дочерними элементами часов.
+<div id="elem" class="c-clock">
+	<span class="c-clock__hours">12</span> :
+	<span class="c-clock__minutes">30</span> :
+	<span class="c-clock__seconds">00</span>
+</div>
+
+<div id="tooltip" hidden>Подсказка</div>
+
+<script>
+	const hoverIntent = {
+		isMouseAboveClock: false,
+		clockDiv: null,
+		tooltip: document.createElement('div'),
+		init: function (id) {
+			this.clockDiv = document.getElementById(id);
+			this.addListeners();
+		},
+		showToolTip: function () {
+			this.tooltip.className = "c-tooltip";
+			this.tooltip.innerHTML = "Подсказка";
+			this.tooltip.style.left = this.clockDiv.getBoundingClientRect().left + 'px';
+			this.tooltip.style.top = this.clockDiv.getBoundingClientRect().bottom + 5 + 'px';
+
+			document.body.append(this.tooltip);
+		},
+		addListeners: function () {
+			const self = this;
+
+			self.clockDiv.addEventListener('mouseenter', function () {
+				self.isMouseAboveClock = true;
+
+				setTimeout(function () {
+					if (self.isMouseAboveClock) {
+						self.showToolTip();
+					}
+				}, 2000)
+			})
+
+			this.clockDiv.addEventListener('mouseleave', function () {
+				self.isMouseAboveClock = false;
+				self.tooltip.remove();
+			})
+		},
+	}
+
+	hoverIntent.init('elem');
+</script>
+</body>
+</html>
