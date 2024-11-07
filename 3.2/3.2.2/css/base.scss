@@ -1,0 +1,26 @@
+.c-clock {
+	border: 1px dashed black;
+	padding: 5px;
+	display: inline-block;
+	background: yellow;
+	left: 0;
+	top: 0;
+}
+.c-clock__hours {
+	color: red;
+}
+
+.c-clock__minutes {
+	color: green;
+}
+
+.c-clock__seconds {
+	color: blue;
+}
+
+.c-tooltip {
+	position: absolute;
+	background: #eee;
+	border: 1px brown solid;
+	padding: 3px;
+}

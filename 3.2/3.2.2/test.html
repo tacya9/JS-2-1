@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+<button id="plus">plus</button>
+<button id="minus">minus</button>
+<div id="result">0</div>
+<script>
+	const plusBtn = document.getElementById('plus');
+	const minusBtn = document.getElementById('minus');
+	const resultDiv = document.getElementById('result');
+
+	let counter = 0;
+
+	plusBtn.addEventListener('click', function () {
+		counter += 1;
+		resultDiv.innerHTML = `${counter}`;
+	})
+
+	minusBtn.addEventListener('click', function () {
+		counter -= 1;
+		resultDiv.innerHTML = `${counter}`;
+	})
+
+</script>
+</body>
+</html>
