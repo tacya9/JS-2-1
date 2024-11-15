@@ -16,26 +16,25 @@ html, body {
   height: 128px;
   float: left;
 }
-.c-heroes.m-hero1 {
+.c-heroes.m-hero-1 {
   background-position: 0 0;
 }
-.c-heroes.m-hero2 {
+.c-heroes.m-hero-2 {
   background-position: 0 -128px;
 }
-.c-heroes.m-hero3 {
+.c-heroes.m-hero-3 {
   background-position: -120px 0;
 }
-.c-heroes.m-hero4 {
+.c-heroes.m-hero-4 {
   background-position: -125px -128px;
 }
-.c-heroes.m-hero5 {
+.c-heroes.m-hero-5 {
   background-position: -248px -128px;
 }
-.c-heroes.m-hero6 {
+.c-heroes.m-hero-6 {
   background-position: -244px 0;
 }
-
-.c-heroes__draggable {
+.c-heroes.m-draggable {
   cursor: pointer;
 }
 

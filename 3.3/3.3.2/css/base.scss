@@ -16,31 +16,25 @@ html, body {
 	height: 128px;
 	float: left;
 
-	&.m-hero1 {
+	&.m-hero-1 {
 		background-position: 0 0;
 	}
-
-	&.m-hero2 {
+	&.m-hero-2 {
 		background-position: 0 -128px;
 	}
-
-	&.m-hero3 {
+	&.m-hero-3 {
 		background-position: -120px 0;
 	}
-
-	&.m-hero4 {
+	&.m-hero-4 {
 		background-position: -125px -128px;
 	}
-
-	&.m-hero5 {
+	&.m-hero-5 {
 		background-position: -248px -128px;
 	}
-
-	&.m-hero6 {
+	&.m-hero-6 {
 		background-position: -244px 0;
 	}
-}
-
-.c-heroes__draggable {
-	cursor: pointer;
+	&.m-draggable {
+		cursor: pointer;
+	}
 }
