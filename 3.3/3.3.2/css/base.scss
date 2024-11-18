@@ -10,7 +10,7 @@ html, body {
 	float: left;
 }
 
-.c-heroes {
+.c-hero {
 	background: url(https://js.cx/drag-heroes/heroes.png);
 	width: 130px;
 	height: 128px;
@@ -37,4 +37,8 @@ html, body {
 	&.m-draggable {
 		cursor: pointer;
 	}
+}
+
+.c-ball {
+	cursor: pointer;
 }

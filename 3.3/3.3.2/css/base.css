@@ -10,31 +10,35 @@ html, body {
   float: left;
 }
 
-.c-heroes {
+.c-hero {
   background: url(https://js.cx/drag-heroes/heroes.png);
   width: 130px;
   height: 128px;
   float: left;
 }
-.c-heroes.m-hero-1 {
+.c-hero.m-hero-1 {
   background-position: 0 0;
 }
-.c-heroes.m-hero-2 {
+.c-hero.m-hero-2 {
   background-position: 0 -128px;
 }
-.c-heroes.m-hero-3 {
+.c-hero.m-hero-3 {
   background-position: -120px 0;
 }
-.c-heroes.m-hero-4 {
+.c-hero.m-hero-4 {
   background-position: -125px -128px;
 }
-.c-heroes.m-hero-5 {
+.c-hero.m-hero-5 {
   background-position: -248px -128px;
 }
-.c-heroes.m-hero-6 {
+.c-hero.m-hero-6 {
   background-position: -244px 0;
 }
-.c-heroes.m-draggable {
+.c-hero.m-draggable {
+  cursor: pointer;
+}
+
+.c-ball {
   cursor: pointer;
 }
 
