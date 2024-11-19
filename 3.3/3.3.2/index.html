@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 3.3.2
+В этой задаче вы можете проверить своё понимание сразу нескольких аспектов Drag’n’Drop и DOM.
+
+Сделайте так, чтобы элементы с классом draggable можно было переносить мышкой. Как мяч в этой главе.
+
+Требования к реализации:
+
+Используйте делегирование событий для отслеживания начала перетаскивания: только один обработчик событий mousedown на
+документе.
+Если элементы подносят к верхней/нижней границе окна – оно должно прокручиваться вверх/вниз, чтобы позволить дальнейшее
+перетаскивание.
+Горизонтальная прокрутка отсутствует (чуть-чуть упрощает задачу, её просто добавить).
+Элемент при переносе, даже при резких движениях мышкой, не должен даже частично попасть вне окна.
+<div class="c-field"></div>
+<div id="heroes">
+	<div data-draggable class="c-hero m-hero-1 m-draggable"></div>
+	<div data-draggable class="c-hero m-hero-2 m-draggable"></div>
+	<div data-draggable class="c-hero m-hero-3 m-draggable"></div>
+	<div data-draggable class="c-hero m-hero-4 m-draggable"></div>
+	<div data-draggable class="c-hero m-hero-5 m-draggable"></div>
+	<div data-draggable class="c-hero m-hero-6 m-draggable"></div>
+	<img data-draggable src="https://en.js.cx/clipart/ball.svg" class="c-ball">
+</div>
+
+<div style="clear:both"></div>
+<script>
+	const heroesField = {
+		shiftX: null,
+		shiftY: null,
+		draggableTarget: null,
+		heroes: null,
+		init: function (id) {
+			this.heroes = document.getElementById(id);
+			this.addListeners();
+		},
+		setPos: function (event) {
+			const target = this.draggableTarget;
+
+			target.style.position = 'absolute';
+			target.style.left = `${event.pageX - this.shiftX}px`;
+			target.style.top = `${event.pageY - this.shiftY}px`;
+		},
+		cancelNativeBehavior: function (event) {
+			event.preventDefault();
+		},
+		addListeners: function () {
+			const self = this;
+
+			self.heroes.addEventListener('mousedown', function (event) {
+				const target = event.target;
+				const setPosition = self.setPos.bind(self);
+
+				self.shiftX = event.pageX - target.offsetLeft;
+				self.shiftY = event.pageY - target.offsetTop;
+
+				if (target.hasAttribute('data-draggable')) {
+					self.draggableTarget = target;
+
+					document.addEventListener('mousemove', setPosition);
+					target.addEventListener('dragstart', self.cancelNativeBehavior.bind(self));
+				}
+
+				document.addEventListener('mouseup', function () {
+					document.removeEventListener('mousemove', setPosition);
+					target.removeEventListener('dragstart', self.cancelNativeBehavior);
+				})
+			})
+		}
+	}
+
+	heroesField.init('heroes');
+</script>
+</body>
+</html>

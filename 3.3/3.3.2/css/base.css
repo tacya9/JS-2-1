@@ -1,0 +1,45 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.c-field {
+  background: url(https://js.cx/drag-heroes/field.png);
+  width: 800px;
+  height: 600px;
+  float: left;
+}
+
+.c-hero {
+  background: url(https://js.cx/drag-heroes/heroes.png);
+  width: 130px;
+  height: 128px;
+  float: left;
+}
+.c-hero.m-hero-1 {
+  background-position: 0 0;
+}
+.c-hero.m-hero-2 {
+  background-position: 0 -128px;
+}
+.c-hero.m-hero-3 {
+  background-position: -120px 0;
+}
+.c-hero.m-hero-4 {
+  background-position: -125px -128px;
+}
+.c-hero.m-hero-5 {
+  background-position: -248px -128px;
+}
+.c-hero.m-hero-6 {
+  background-position: -244px 0;
+}
+.c-hero.m-draggable {
+  cursor: pointer;
+}
+
+.c-ball {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=base.css.map */
