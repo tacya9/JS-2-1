@@ -1,0 +1,35 @@
+@charset "UTF-8";
+body,
+html {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.c-matrix {
+  width: 400px;
+  margin: auto;
+  overflow: auto;
+  text-align: justify;
+}
+
+.c-arrow-top {
+  height: 9px;
+  width: 14px;
+  color: green;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  display: none;
+}
+.c-arrow-top.m-visible {
+  display: block;
+}
+
+.c-arrow-top::before {
+  content: "▲";
+}
+
+/*# sourceMappingURL=base.css.map */
