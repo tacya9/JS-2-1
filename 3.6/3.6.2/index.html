@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Title</title>
+	<meta charset="UTF-8">
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+
+	<div class="c-matrix">
+		<script>
+			for (let i = 0; i < 2000; i++) document.writeln(i)
+		</script>
+	</div>
+
+	<div id="arrowTop" class="c-arrow-top"></div>
+
+### 3.6.2
+Создайте кнопку «наверх», чтобы помочь с прокруткой страницы.
+
+Она должна работать следующим образом:
+
+Пока страница не прокручена вниз хотя бы на высоту окна – кнопка невидима.
+Когда страница прокручена вниз больше, чем на высоту окна – появляется стрелка «наверх» в левом верхнем углу. Если
+страница прокручивается назад, стрелка исчезает.
+Когда нажимается стрелка, страница прокручивается вверх.
+Как тут (слева-сверху, прокрутите):
+<script>
+
+	const arrow = document.getElementById('arrowTop');
+
+	window.addEventListener('scroll', function () {
+		if (window.pageYOffset > document.documentElement.clientHeight) {
+			arrow.classList.add('m-visible');
+		} else {
+			arrow.classList.remove('m-visible');
+		}
+	})
+
+	arrow.addEventListener('click', function () {
+		window.scrollTo(0,0);
+	})
+</script>
+</body>
+</html>
