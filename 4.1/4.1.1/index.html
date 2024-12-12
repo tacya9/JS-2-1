@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+### 4.1.1
+Имеется select:
+
+<select id="genres">
+	<option value="rock">Рок</option>
+	<option value="blues" selected>Блюз</option>
+</select>
+Используя JavaScript:
+
+Выведите значение и текст выбранного пункта.
+Добавьте пункт: option value="classic">Классика /option.
+Сделайте его выбранным.
+
+<script>
+	const select = document.getElementById('genres');
+
+	console.log(select.options[1].value, select.options[1].innerText)
+	select.options[2] = new Option('Классика', 'classic', true, true);
+</script>
+</body>
+</html>
