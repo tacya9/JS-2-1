@@ -77,9 +77,6 @@
 
 </table>
 
-
-<!--<script src="script.js"></script>-->
-
 <script>
 	const table = document.getElementById('bagua-table');
 	let isEditMode = false;
@@ -113,7 +110,7 @@
 				isEditMode = false;
 			})
 
-			container.prepend(textarea);
+			container.append(textarea);
 			container.append(okButton);
 			container.append(cancelButton);
 			target.append(container);
