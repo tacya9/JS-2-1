@@ -1,0 +1,70 @@
+.c-table:focus {
+  border-color: darkred;
+}
+
+.c-table__title {
+  text-align: center;
+  font-weight: bold;
+}
+
+.c-table__cell {
+  width: 150px;
+  height: 85px;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  position: relative;
+}
+.c-table__cell:focus {
+  background: cyan;
+}
+.c-table__cell.m-grey {
+  background-color: #999;
+}
+.c-table__cell.m-blue {
+  background-color: #03f;
+  color: #fff;
+}
+.c-table__cell.m-light-yellow {
+  background-color: #ff6;
+}
+.c-table__cell.m-yellow {
+  background-color: #ff0;
+}
+.c-table__cell.m-violet {
+  background-color: #60c;
+  color: #fff;
+}
+.c-table__cell.m-light-blue {
+  background-color: #09f;
+  color: #fff;
+}
+.c-table__cell.m-light-brown {
+  background-color: #963;
+  color: #fff;
+}
+.c-table__cell.m-orange {
+  background-color: #f60;
+  color: #fff;
+}
+.c-table__cell.m-green {
+  background-color: #0c3;
+  color: #fff;
+}
+
+.c-table__container,
+.c-table__textarea {
+  position: absolute;
+  inset: 0;
+  text-align: left;
+}
+
+.c-table__button {
+  position: relative;
+  padding: 5px 10px;
+  z-index: 1;
+  bottom: -100%;
+}
+
+/*# sourceMappingURL=base.css.map */

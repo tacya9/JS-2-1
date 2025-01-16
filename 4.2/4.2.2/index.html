@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+### 4.2.2
+Редактирование TD по клику
+Сделайте ячейки таблицы редактируемыми по клику.
+
+По клику – ячейка должна стать «редактируемой» (textarea появляется внутри), мы можем изменять HTML. Изменение размера
+ячейки должно быть отключено.
+Кнопки OK и ОТМЕНА появляются ниже ячейки и, соответственно, завершают/отменяют редактирование.
+Только одну ячейку можно редактировать за один раз. Пока td в «режиме редактирования», клики по другим ячейкам
+игнорируются.
+Таблица может иметь множество ячеек. Используйте делегирование событий.
+
+<p>Кликните на ячейку таблицы, чтобы отредактировать её. Нажмите ОК или ОТМЕНА, когда закончите.</p>
+
+<table id="bagua-table" class="c-table">
+	<tr>
+		<th class="c-table__title" colspan="3">Квадрат <em>Bagua</em>: Направление, Элемент, Цвет, Значение</th>
+	</tr>
+	<tr>
+		<td data-cell class="c-table__cell m-grey"><strong>Северо-Запад</strong>
+			<br>Металл
+			<br>Серебро
+			<br>Старейшины
+		</td>
+		<td data-cell class="c-table__cell m-blue"><strong>Север</strong>
+			<br>Вода
+			<br>Синий
+			<br>Перемены
+		</td>
+		<td data-cell class="c-table__cell m-light-yellow"><strong>Северо-Восток</strong>
+			<br>Земля
+			<br>Жёлтый
+			<br>Направление
+		</td>
+	</tr>
+	<tr>
+		<td data-cell class="c-table__cell m-yellow"><strong>Запад</strong>
+			<br>Металл
+			<br>Золото
+			<br>Молодость
+		</td>
+		<td data-cell class="c-table__cell m-violet"><strong>Центр</strong>
+			<br>Всё
+			<br>Пурпурный
+			<br>Гармония
+		</td>
+		<td data-cell class="c-table__cell m-light-blue"><strong>Восток</strong>
+			<br>Дерево
+			<br>Синий
+			<br>Будущее
+		</td>
+	</tr>
+	<tr>
+		<td data-cell class="c-table__cell m-light-brown"><strong>Юго-Запад</strong>
+			<br>Земля
+			<br>Коричневый
+			<br>Спокойствие
+		</td>
+		<td data-cell class="c-table__cell m-orange"><strong>Юг</strong>
+			<br>Огонь
+			<br>Оранжевый
+			<br>Слава
+		</td>
+		<td data-cell class="c-table__cell m-green"><strong>Юго-Восток</strong>
+			<br>Дерево
+			<br>Зеленый
+			<br>Роман
+		</td>
+	</tr>
+
+</table>
+
+
+<!--<script src="script.js"></script>-->
+
+<script>
+	const table = document.getElementById('bagua-table');
+	let isEditMode = false;
+
+	table.addEventListener('click', function (event) {
+		const target = event.target;
+
+		if (target.hasAttribute('data-cell') && !isEditMode) {
+			const container = document.createElement('div');
+			const textarea = document.createElement('textarea');
+			const okButton = document.createElement('button');
+			const cancelButton = document.createElement('button');
+
+			container.classList.add('c-table__container');
+
+			textarea.value = `${target.innerHTML}`;
+			textarea.classList.add('c-table__textarea');
+
+			okButton.innerHTML = 'OK';
+			okButton.classList.add('c-table__button');
+			okButton.addEventListener('click', function () {
+				target.innerHTML = textarea.value;
+				container.remove();
+				isEditMode = false;
+			})
+
+			cancelButton.innerHTML = 'CANCEL';
+			cancelButton.classList.add('c-table__button');
+			cancelButton.addEventListener('click', function () {
+				container.remove();
+				isEditMode = false;
+			})
+
+			container.prepend(textarea);
+			container.append(okButton);
+			container.append(cancelButton);
+			target.append(container);
+
+			isEditMode = true;
+		}
+	})
+</script>
+</body>
+</html>

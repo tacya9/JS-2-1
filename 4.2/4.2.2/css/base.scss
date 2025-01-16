@@ -1,0 +1,74 @@
+.c-table:focus {
+	border-color: darkred;
+}
+.c-table__title {
+	text-align: center;
+	font-weight: bold;
+}
+.c-table__cell {
+	width: 150px;
+	height: 85px;
+	white-space: nowrap;
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px;
+	position: relative;
+
+	&:focus {
+		background: cyan;
+	}
+
+	&.m-grey {
+		background-color: #999;
+	}
+
+	&.m-blue {
+		background-color: #03f;
+		color: #fff;
+	}
+
+	&.m-light-yellow {
+		background-color: #ff6;
+	}
+
+	&.m-yellow {
+		background-color: #ff0;
+	}
+
+	&.m-violet {
+		background-color: #60c;
+		color: #fff;
+	}
+
+	&.m-light-blue {
+		background-color: #09f;
+		color: #fff;
+	}
+
+	&.m-light-brown {
+		background-color: #963;
+		color: #fff;
+	}
+
+	&.m-orange {
+		background-color: #f60;
+		color: #fff;
+	}
+
+	&.m-green {
+		background-color: #0c3;
+		color: #fff;
+	}
+}
+.c-table__container,
+.c-table__textarea {
+	position: absolute;
+	inset: 0;
+	text-align: left;
+}
+.c-table__button {
+	position: relative;
+	padding: 5px 10px;
+	z-index: 1;
+	bottom: -100%;
+}
