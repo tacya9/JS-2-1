@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<link href="css/base.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+### 4.2.3
+Установите фокус на мышь. Затем используйте клавиши со стрелками, чтобы её двигать:
+Демо в новом окне
+P.S. Не добавляйте обработчики никуда, кроме элемента #mouse.
+P.P.S. Не изменяйте HTML/CSS, подход должен быть общим и работать с любым элементом.
+<p>Кликните по "изображению" мыши и перемещайте её с помощью клавиш со стрелками.</p>
+
+<pre id="mouse" class="c-mouse" tabindex="0">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+<script>
+	const mouse = document.getElementById('mouse');
+
+	mouse.addEventListener('keydown', function (event) {
+		const mouseLeft = parseInt(getComputedStyle(mouse).left);
+		const mouseTop = parseInt(getComputedStyle(mouse).top);
+
+		switch (event.code) {
+			case 'ArrowLeft':
+				mouse.style.left = `${mouseLeft - mouse.offsetWidth}px`;
+				break;
+			case 'ArrowRight':
+				mouse.style.left = `${mouseLeft + mouse.offsetWidth}px`;
+				break;
+			case 'ArrowUp':
+				mouse.style.top = `${mouseTop - mouse.offsetHeight}px`;
+				break;
+			case 'ArrowDown':
+				mouse.style.top = `${mouseTop + mouse.offsetHeight}px`;
+				break;
+		}
+	})
+</script>
+</body>
+</html>

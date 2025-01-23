@@ -1,0 +1,13 @@
+.c-mouse {
+	display: inline-block;
+	cursor: pointer;
+	margin: 0;
+	position: relative;
+	left: 0;
+	top: 0;
+
+	&:focus {
+		outline: 1px dashed black;
+	}
+}
+
