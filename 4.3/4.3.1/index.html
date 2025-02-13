@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+
+	<style>
+		td select,
+		td input {
+			width: 150px;
+		}
+
+		#diagram td {
+			vertical-align: bottom;
+			text-align: center;
+			padding: 10px;
+		}
+
+		#diagram div {
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+### 4.3.1
+Создайте интерфейс, позволяющий ввести сумму банковского вклада и процент, а затем рассчитать, какая это будет сумма
+через заданный промежуток времени.
+
+Любое изменение введённых данных должно быть обработано немедленно.
+Депозитный калькулятор.
+
+<form name="calculator">
+	<table>
+		<tr>
+			<td>Первоначальный депозит</td>
+			<td>
+				<input name="money" type="number" value="10000" required>
+			</td>
+		</tr>
+		<tr>
+			<td>Срок вклада?</td>
+			<td>
+				<select name="months">
+					<option value="3">3 (минимум)</option>
+					<option value="6">6 (полгода)</option>
+					<option value="12" selected>12 (год)</option>
+					<option value="18">18 (1.5 года)</option>
+					<option value="24">24 (2 года)</option>
+					<option value="30">30 (2.5 года)</option>
+					<option value="36">36 (3 года)</option>
+					<option value="60">60 (5 лет)</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Годовая процентная ставка?</td>
+			<td>
+				<input name="interest" type="number" value="5" required>
+			</td>
+		</tr>
+	</table>
+
+</form>
+
+<table id="diagram">
+	<tr>
+		<th>Было:</th>
+		<th>Станет:</th>
+	</tr>
+	<tr>
+		<th id="money-before"></th>
+		<th id="money-after"></th>
+	</tr>
+	<tr>
+		<td>
+			<div style="background: red;width:40px;height:100px"></div>
+		</td>
+		<td>
+			<div id="height-after" style="background: green;width:40px;height:0"></div>
+		</td>
+	</tr>
+</table>
+
+<script>
+	const form = document.forms.calculator;
+	const moneyInput = form.money;
+	const interestInput = form.interest;
+	const monthsSelect = form.months;
+	const heightAfter = document.getElementById('height-after');
+	const moneyBefore = document.getElementById('money-before');
+	const moneyAfter = document.getElementById('money-after');
+	const calculateTotalSum = function () {
+		const money = moneyInput.value;
+		const interest = interestInput.value * 0.01;
+		const years = monthsSelect.value / 12;
+		const result = +money + Math.round(money * interest * years);
+
+		moneyBefore.innerHTML = `${money}`;
+		moneyAfter.innerHTML = `${result}`;
+		heightAfter.style.height = `${(result / money) * 100}px`;
+	}
+
+	moneyInput.addEventListener('input', calculateTotalSum)
+	interestInput.addEventListener('input', calculateTotalSum)
+	monthsSelect.addEventListener('change', calculateTotalSum)
+
+	calculateTotalSum();
+</script>
+</body>
+</html>
